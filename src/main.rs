@@ -299,6 +299,7 @@ mod tests {
     #[test]
     fn test_parse_all_addresses() {
         let res = address_row("AUTOPUT ZA NOVI SAD: BB,284,294-296F,  BATAJNIČKI DRUM: BB,261-265,269,283-293,299,303-303A,").expect("parse the address row");
+
         assert_eq!(
             res,
             (
@@ -317,7 +318,7 @@ mod tests {
                         vec![
                             Broj::BezBroj,
                             Broj::from(BrojRange::from(("261", "265"))),
-                            Broj::from(Number::from("268")),
+                            Broj::from(Number::from("269")),
                             Broj::from(BrojRange::from(("283", "293"))),
                             Broj::from(Number::from("299")),
                             Broj::from(BrojRange::from(("303", "303A"))),

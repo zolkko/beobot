@@ -6,6 +6,7 @@ use tracing_subscriber::FmtSubscriber;
 
 mod addresses;
 mod script_mapper;
+mod timeint;
 
 use addresses::Addresses;
 use script_mapper::Mapper;

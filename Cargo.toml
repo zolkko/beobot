@@ -1,5 +1,5 @@
 [package]
-name = "beobot-scrapper"
+name = "beobot"
 version = "0.1.0"
 edition = "2021"
 authors = ["zolkko <zolkko@gmail.com>"]

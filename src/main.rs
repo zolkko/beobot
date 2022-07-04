@@ -7,8 +7,8 @@ use tracing_subscriber::FmtSubscriber;
 mod addresses;
 mod script_mapper;
 
+use addresses::Addresses;
 use script_mapper::Mapper;
-use addresses::addresses_info;
 
 // https://elektrodistribucija.rs/NoviSad_Dan_0_Iskljucenja.htm
 
@@ -58,11 +58,8 @@ async fn main() -> AnyhowResult<()> {
 
                 if let Some((d, t, s)) = columns {
                     let transformed: String = text_mapper.transoform(&s);
-                    let (_, x) = addresses_info(transformed.as_str()).map_err(|e| anyhow!("{e}"))?;
-                    println!(
-                        "{}\t{t}\t{x:?}",
-                        text_mapper.transoform(&d)
-                    );
+                    let x = Addresses::parse(transformed.as_str()).map_err(|e| anyhow!("{e}"))?;
+                    println!("{}\t{t}\t{x:?}", text_mapper.transoform(&d));
                     println!("\n\n-----------\n");
                 } else {
                     tracing::warn!("malformed row #{i}: {row:?}");
